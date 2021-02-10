@@ -25,7 +25,7 @@ import javax.swing.JTextField;
  * interface so that we can respond to user-initiated GUI events.
  */
 public class View extends JFrame implements ActionListener {
-
+dfkndkjkfjjk
     /**
      * The width of the View frame. Define a private class constant.
      */
