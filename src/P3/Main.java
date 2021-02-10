@@ -21,17 +21,20 @@ public class Main {
     /**
      * The Roster of students that is read from the input file "gradebook.dat".
      */
-    ???
-
+	private Roster mRoster;
+	private View mView;
+	
     /**
      * A reference to the View object.
      */
-    ???
+
 
     /**
      * This is where execution starts. Instantiate a Main object and then call run().
      */
-    ???
+	public static void main(String[] args) {
+		run();
+	}
 
     /**
      * exit() is called when the Exit button in the View is clicked. When we exit we have to write
@@ -55,17 +58,30 @@ public class Main {
      *     end try-catch
      * end exit
      */
-    ???
-
+	void exit() {
+		try {
+			GradeBookWriter gbWriter = new GradeBookWriter("gradebook.dat");
+			writeGradeBook(getRoster(gbWriter));
+			System.exit(0);
+		}
+		catch (FileNotFoundException e){
+			getView().messageBox("Could not open gradebook.dat for writing. Exiting without saving.");
+			System.exit(-1);
+		}
+	}
     /**
      * This method returns the number of exams in the class.
      */
-    ???
 
+	public int getNumExams() {
+		mExamText.getText();
+	}
     /**
      * This method returns the number of homework assignments in the class.
      */
-    ???
+	public int getNumHomeworks() {
+		mHomeworkText.getText();
+	}
 
     /**
      * Accessor method for mRoster.
@@ -106,7 +122,19 @@ public class Main {
      *     end try-catch
      * end run
      */
-    ???
+    public void run() {
+    	JFrame.setDefaultLookAndFeelDecorated(true);
+    	View myView = new View(this);
+    	setView(myView);
+    	setView(new View(this));
+    	
+    	try {
+    		
+    	}
+    	catch (FileNotFoundException e){
+    		System.exit(-1);
+    	}
+    }
 
     /**
      * search() is called when the Search button is clicked in the View. The input parameter is
@@ -121,7 +149,10 @@ public class Main {
      *     call getRoster().getStudent(pLastName) and return what getStudent() returns
      * end search
      */
-    ???
+    public Student search(String pLastName) {
+    	getRoster().getStudent(pLastName);
+    	return getStudent();
+    }
 
     /**
      * Mutator method for mRoster.

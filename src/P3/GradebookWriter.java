@@ -10,6 +10,7 @@
 //**************************************************************************************************
 package P3;
 
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 
@@ -19,7 +20,11 @@ import java.io.PrintWriter;
  */
 public class GradebookWriter extends PrintWriter {
 
-    /**
+    public GradebookWriter(File pFname) throws FileNotFoundException {
+		super(pFname);
+	}
+
+	/**
      * Call the super class ctor that takes a String as the argument, i.e, PrintWriter(String).
      * The PrintWriter ctor opens the file named by pFname for writing. It will throw a
      * FileNotFoundException if the file could not be opened for writing. We throw the exception
@@ -27,7 +32,7 @@ public class GradebookWriter extends PrintWriter {
      *
      * @param pFname The name of the output file to be opened for writing.
      */
-    ???
+
 
     /**
      * Writes the gradebook info to the output file which was opened in the ctor.
@@ -42,5 +47,10 @@ public class GradebookWriter extends PrintWriter {
      *     Call close()
      * end writeGradebook
      */
-    ???
+    public void writeGradebook(Roster pRoster) {
+    	for(Student student : pRoster.getStudentList()) {
+    		println(student);
+    	}
+    	close();
+    }
 }
