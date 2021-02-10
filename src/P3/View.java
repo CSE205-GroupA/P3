@@ -280,7 +280,9 @@ public class View extends JFrame implements ActionListener {
      * @param mExamText2 
      */   
     void clearNumbers() {
-    	Integer.parseInt(mExamText.setText(""));
+    	int i = 0;
+    	mExamText[i].setText("");
+    	mHomeworkText[i].setText("");
     	
     }
     /**
@@ -303,7 +305,18 @@ public class View extends JFrame implements ActionListener {
      *
      * DO NOT HARCODE THE NUMBER OF HOMEWORKS AND EXAMS
      */
-
+    void displayStudent(Student pStudent) {
+    	for(int i = 0; i < Main.getNumHomeworks - 1; i++) {
+    		int hw = pStudent.getHomework(i);
+    		String hwstr = Integer.toString(hw);
+    		mHomeworkText[i].setText(hwstr);
+    	}
+    	for(int i = 0; i < Main.getNumExams - 1; i++) {
+    		int ex = pStudent.getExam(i);
+    		String exstr = Integer.toString(ex);
+    		mExamText[i].setText(exstr);
+    	}
+    }
 
     /**
      * Accessor method for mMain.
@@ -326,7 +339,9 @@ public class View extends JFrame implements ActionListener {
      *     Call JOptionPane.showMessageDialog() to display pMessage.
      * end messageBox
      */
-
+    void messageBox(String pMessage) {
+    	JOptionPane.showMessageDialog(null, pMessage);
+    }
 
     /**
      * saveStudent()
@@ -346,7 +361,18 @@ public class View extends JFrame implements ActionListener {
      *
      * DO NOT HARDCODE THE NUMBER OF HOMEWORKS AND EXAMS
      */ 
-
+    void saveStudent(Student pStudent) {
+    	for(int i = 0; i < Main.getNumHomeworks - 1; i++) {
+    		String hwstr = mHomeworkText[i].getText();
+    		int hw = Integer.parseInt(hwstr);
+    		pStudent.setHomework(i, hw);
+    	}
+    	for(int i = 0; i < Main.getNumExams - 1; i++) {
+    		String exstr = mExamText[i].getText();
+    		int ex = Integer.parseInt(exstr);
+    		pStudent.setHomework(i, ex);
+    	}
+    }
     /**
      * Mutator method for mMain.
      */
