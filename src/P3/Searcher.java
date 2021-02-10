@@ -15,7 +15,17 @@
  * AUTHOR 3: Delaney Claussen , djclaus1, djclaus1@asu.edu
  * AUTHOR 4: Taylor Hedrick, tmhedric, tmhedric@asu.edu
  ********************************************************************************************************/
+package P3;
+
+import java.util.ArrayList;
 
 public class Searcher {
-
+	public static int search(ArrayList<Student> pList, String pKey) {
+	      for (int i = 0; i < pList.size(); i++) {  
+	    	  if (pList.get(i).getLastName().equals(pKey)) { 
+	        	 return pList.indexOf(i); 
+	          }
+	      }
+	      return -1;
+	}
 }
