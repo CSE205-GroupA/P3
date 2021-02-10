@@ -18,19 +18,40 @@
 package P3;
 
 import java.util.ArrayList;
-import java.util.Collections;
 
 public class Sorter {
 	
 	private static int partition(ArrayList<Student> pList, int pFromIdx, int pToIdx) {
-		return ;
+		String pivot = pList.get(pFromIdx).getLastName();
+		
+		while (pFromIdx < pToIdx) {
+			while (pList.get(pFromIdx).getLastName().compareTo(pivot)<0) {
+				pFromIdx++;
+			}
+			while (pList.get(pToIdx).getLastName().compareTo(pivot)>0) {
+				pToIdx--;
+			}
+			if (pFromIdx < pToIdx) {
+				swap(pList, pFromIdx, pToIdx);
+			}
+		}
+		return pFromIdx;
 	}
-	
 	private static void quickSort(ArrayList<Student> pList, int pFromIdx, int pToIdx) {
+		if(pFromIdx > pToIdx) {
+			return;
+		}
+		int partition = partition(pList, pFromIdx, pToIdx);
+		quickSort(pList, pFromIdx, partition);
+		quickSort(pList, partition + 1, pToIdx);
 		
 	}
 	
 	public static void sort(ArrayList<Student> pList) {
+		if (pList.size()==0) {
+			return;
+		}
+		quickSort(pList, 0, pList.size()-1);
 		
 	}
 	
