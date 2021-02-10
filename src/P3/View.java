@@ -51,7 +51,6 @@ public class View extends JFrame implements ActionListener {
      */
 	private JTextField[] mExamText;
 	private JTextField mStudentName;
-	private JButton searchButton;
 	private JTextField[] mHomeworkText;
 	private JButton mClearButton;
 	private JButton mExitButton;
@@ -87,9 +86,9 @@ public class View extends JFrame implements ActionListener {
         mStudentName = new JTextField(25);
         panelSearch.add(mStudentName);
         
-        searchButton = new JButton("Search");
-        panelSearch.add(searchButton);
-        searchButton.addActionListener(this);
+        mSearchButton = new JButton("Search");
+        panelSearch.add(mSearchButton);
+        mSearchButton.addActionListener(this);
 
         // PSEUDOCODE:
         // Create a JPanel named panelHomework which uses the FlowLayout
@@ -128,15 +127,20 @@ public class View extends JFrame implements ActionListener {
         // Repeat the three above statements for the Save button
         // Repeat the three above statements for the Exit button
         JPanel panelButtons = new JPanel(new FlowLayout());
+        mClearButton = new JButton("Clear");
+        mSaveButton = new JButton("Save");
+        mExitButton = new JButton("Exit");
         panelButtons.add(mClearButton);
+        panelButtons.add(mSaveButton);
+        panelButtons.add(mExitButton);
         // PSEUDOCODE:
         // Create a JPanel named panelMain using a vertical BoxLayout
         // Add panelSearch to panelMain.
         // Add panelHomework to panelMain
         // Add panelExam to panelMain
         // Add panelButtons to panelMain
-
-
+        JPanel panelMain = new JPanel();
+        
         // Set the title of the View to whatever you want by calling setTitle()
 
 
