@@ -49,10 +49,14 @@ public class View extends JFrame implements ActionListener {
     /*
      * Declare GUI related instance variables for the buttons and text fields.
      */
-	private JLabel label;
+	private JTextField[] mExamText;
 	private JTextField mStudentName;
 	private JButton searchButton;
-	
+	private JTextField[] mHomeworkText;
+	private JButton mClearButton;
+	private JButton mExitButton;
+	private JButton mSaveButton;
+	private JButton mSearchButton;
     /**
      * View()
      *
@@ -67,18 +71,6 @@ public class View extends JFrame implements ActionListener {
          * Save a reference to the Main object pMain into instance var mMain by calling setMain().
          */
         setMain(pMain);
-        JPanel panelSearch = new JPanel();
-        panelSearch.setLayout(new FlowLayout());
-        label = new JLabel("Student Name: ");
-        
-        panelSearch.add(label);
-        
-        mStudentName = new JTextField(25);
-        panelSearch.add(mStudentName);
-        
-        searchButton = new JButton("Search");
-        panelSearch.add(searchButton);
-        searchButton.addActionListener(this);
         
         // PSEUDOCODE:
         // Create a JPanel named panelSearch which uses the FlowLayout
@@ -88,7 +80,16 @@ public class View extends JFrame implements ActionListener {
         // Create mSearchButton with the label "Search"
         // Make this View the action listener for the button
         // Add the button to the panel
-
+        JPanel panelSearch = new JPanel(new FlowLayout());
+        JLabel label = new JLabel("Student Name: ");
+        panelSearch.add(label);
+        
+        mStudentName = new JTextField(25);
+        panelSearch.add(mStudentName);
+        
+        searchButton = new JButton("Search");
+        panelSearch.add(searchButton);
+        searchButton.addActionListener(this);
 
         // PSEUDOCODE:
         // Create a JPanel named panelHomework which uses the FlowLayout
@@ -99,14 +100,26 @@ public class View extends JFrame implements ActionListener {
         //     Add mHomeworkText[i] to the panel
         // End For
         // Note: DO NOT HARDCODE THE NUMBER OF HOMEWORK ASSIGNMENTS
-
-
+        int assignments = 5;
+        JPanel panelHomework = new JPanel(new FlowLayout());
+        JLabel homeworkLabel = new JLabel("Homework: ");
+        panelHomework.add(homeworkLabel);
+        mHomeworkText = new JTextField[assignments];
+        
+        for(int i = 0; i < mHomeworkText.length; i++) {
+        	mHomeworkText[i] = new JTextField(assignments);
+        	panelHomework.add(mHomeworkText[i]);
+        }
+        
         // Create the exam panel which contains the "Exam: " label and the two exam text fields.
         // The pseudocode is omitted because this code is very similar to the code that creates the
         // panelHomework panel above.
         // Note: DO NOT HARDCODE THE NUMBER OF EXAMS
-
-
+        int exams = 3;
+        JPanel panelExam = new JPanel(new FlowLayout());
+        JLabel examLabel = new JLabel("Exam: ");
+        panelExam.add(examLabel);
+        mExamText = new JTextField[exams];
         // PSEUDOCODE:
         // Create a JPanel named panelButtons using FlowLayout
         // Create the Clear button mClearButton labeled "Clear"
@@ -114,8 +127,8 @@ public class View extends JFrame implements ActionListener {
         // Add the  Clear button to the panel
         // Repeat the three above statements for the Save button
         // Repeat the three above statements for the Exit button
-
-
+        JPanel panelButtons = new JPanel(new FlowLayout());
+        panelButtons.add(mClearButton);
         // PSEUDOCODE:
         // Create a JPanel named panelMain using a vertical BoxLayout
         // Add panelSearch to panelMain.
