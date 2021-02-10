@@ -25,17 +25,16 @@ import javax.swing.JTextField;
  * interface so that we can respond to user-initiated GUI events.
  */
 public class View extends JFrame implements ActionListener {
-
     /**
      * The width of the View frame. Define a private class constant.
      */
-    ???
+	private static final int FRAME_WIDTH = 525;
+	private static final int FRAME_HEIGHT = 225;
 
     /**
      * The height of the View frame. Define a private class constant.
      */
-    ???
-
+    
     /**
      * When the View() ctor is called from Main.run() to create the View, run() passes a reference
      * to the Main object as the argument to View(). We save that reference into mMain and then
@@ -44,13 +43,15 @@ public class View extends JFrame implements ActionListener {
      * mMain is made accessible within this class via accessor/mutator methods getMain() and
      * setMain(). It shall not be directly accessed.
      */
-    ???
+
 
     /*
      * Declare GUI related instance variables for the buttons and text fields.
      */
-    ???
-
+	private JLabel label;
+	private JTextField mStudentName;
+	private JButton searchButton;
+	
     /**
      * View()
      *
@@ -60,12 +61,24 @@ public class View extends JFrame implements ActionListener {
      * they may communicate with each other.
      */
     public View(Main pMain) {
-
+    	
         /**
          * Save a reference to the Main object pMain into instance var mMain by calling setMain().
          */
         setMain(pMain);
-
+        JPanel panelSearch = new JPanel();
+        panelSearch.setLayout(new FlowLayout());
+        label = new JLabel("Student Name: ");
+        
+        panelSearch.add(label);
+        
+        mStudentName = new JTextField(25)
+        panelSearch.add(mStudentName);
+        
+        searchButton = new JButton("Search");
+        panelSearch.add(searchButton);
+        searchButton.addActionListener(this);
+        
         // PSEUDOCODE:
         // Create a JPanel named panelSearch which uses the FlowLayout
         // Add a JLabel "Student Name: " to panelSearch
@@ -74,7 +87,7 @@ public class View extends JFrame implements ActionListener {
         // Create mSearchButton with the label "Search"
         // Make this View the action listener for the button
         // Add the button to the panel
-        ???
+
 
         // PSEUDOCODE:
         // Create a JPanel named panelHomework which uses the FlowLayout
@@ -85,13 +98,13 @@ public class View extends JFrame implements ActionListener {
         //     Add mHomeworkText[i] to the panel
         // End For
         // Note: DO NOT HARDCODE THE NUMBER OF HOMEWORK ASSIGNMENTS
-        ???
+
 
         // Create the exam panel which contains the "Exam: " label and the two exam text fields.
         // The pseudocode is omitted because this code is very similar to the code that creates the
         // panelHomework panel above.
         // Note: DO NOT HARDCODE THE NUMBER OF EXAMS
-        ???
+
 
         // PSEUDOCODE:
         // Create a JPanel named panelButtons using FlowLayout
@@ -100,7 +113,7 @@ public class View extends JFrame implements ActionListener {
         // Add the  Clear button to the panel
         // Repeat the three above statements for the Save button
         // Repeat the three above statements for the Exit button
-        ???
+
 
         // PSEUDOCODE:
         // Create a JPanel named panelMain using a vertical BoxLayout
@@ -108,10 +121,10 @@ public class View extends JFrame implements ActionListener {
         // Add panelHomework to panelMain
         // Add panelExam to panelMain
         // Add panelButtons to panelMain
-        ???
+
 
         // Set the title of the View to whatever you want by calling setTitle()
-        ???
+
 
         // Set the size of the View to FRAME_WIDTH x FRAME_HEIGHT
         setSize(FRAME_WIDTH, FRAME_HEIGHT);
@@ -123,7 +136,7 @@ public class View extends JFrame implements ActionListener {
         // button in the title bar of the View so now the only way to exit the program is by click-
         // ing the Exit button. This ensures that Main.exit() will be called so it will write the
         // student records back out to the gradebook database.
-        ???
+
 
         // Add panelMain to the View.
         add(panelMain);
@@ -177,7 +190,7 @@ public class View extends JFrame implements ActionListener {
      * End If
      * end actionPerformed
      */
-    ???
+
 
     /**
      * clear()
@@ -195,7 +208,7 @@ public class View extends JFrame implements ActionListener {
      *     Set the current Student object in the Student class to null
      * end clear
      */
-    ???
+
 
     /**
      * clearNumbers()
@@ -203,8 +216,7 @@ public class View extends JFrame implements ActionListener {
      * Clears the homework and exam fields.
      *
      * DO NOT HARCODE THE NUMBER OF HOMEWORKS AND EXAMS
-     */
-    ???
+     */   
 
     /**
      * displayStudent()
@@ -226,7 +238,7 @@ public class View extends JFrame implements ActionListener {
      *
      * DO NOT HARCODE THE NUMBER OF HOMEWORKS AND EXAMS
      */
-    ???
+
 
     /**
      * Accessor method for mMain.
@@ -249,7 +261,7 @@ public class View extends JFrame implements ActionListener {
      *     Call JOptionPane.showMessageDialog() to display pMessage.
      * end messageBox
      */
-    ???
+
 
     /**
      * saveStudent()
@@ -268,8 +280,7 @@ public class View extends JFrame implements ActionListener {
      * end method saveStudent
      *
      * DO NOT HARDCODE THE NUMBER OF HOMEWORKS AND EXAMS
-     */
-    ???
+     */ 
 
     /**
      * Mutator method for mMain.
