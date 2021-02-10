@@ -8,7 +8,7 @@
 // Arizona State University, Tempe, AZ 85287-8809
 // (c) Kevin R. Burger 2014-2021
 //**************************************************************************************************
-package proj3;
+package P3;
 
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;

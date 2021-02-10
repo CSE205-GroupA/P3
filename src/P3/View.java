@@ -8,8 +8,9 @@
 // Arizona State University, Tempe, AZ 85287-8809
 // (c) Kevin R. Burger 2014-2021
 //**************************************************************************************************
-package proj3;
+package P3;
 
+import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.BoxLayout;
@@ -72,7 +73,7 @@ public class View extends JFrame implements ActionListener {
         
         panelSearch.add(label);
         
-        mStudentName = new JTextField(25)
+        mStudentName = new JTextField(25);
         panelSearch.add(mStudentName);
         
         searchButton = new JButton("Search");
