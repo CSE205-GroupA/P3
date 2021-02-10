@@ -119,6 +119,10 @@ public class View extends JFrame implements ActionListener {
         JLabel examLabel = new JLabel("Exam: ");
         panelExam.add(examLabel);
         mExamText = new JTextField[exams];
+        for(int i = 0; i < mExamText.length; i++) {
+        	mExamText[i] = new JTextField(exams);
+        	panelExam.add(mExamText[i]);
+        }
         // PSEUDOCODE:
         // Create a JPanel named panelButtons using FlowLayout
         // Create the Clear button mClearButton labeled "Clear"
@@ -140,9 +144,14 @@ public class View extends JFrame implements ActionListener {
         // Add panelExam to panelMain
         // Add panelButtons to panelMain
         JPanel panelMain = new JPanel();
-        
+        BoxLayout boxLayout = new BoxLayout(panelMain, BoxLayout.Y_AXIS);
+        panelMain.setLayout(boxLayout);
+        panelMain.add(panelSearch);
+        panelMain.add(panelHomework);
+        panelMain.add(panelExam);
+        panelMain.add(panelButtons);
         // Set the title of the View to whatever you want by calling setTitle()
-
+        setTitle("Grade Book Editor");
 
         // Set the size of the View to FRAME_WIDTH x FRAME_HEIGHT
         setSize(FRAME_WIDTH, FRAME_HEIGHT);
@@ -154,7 +163,7 @@ public class View extends JFrame implements ActionListener {
         // button in the title bar of the View so now the only way to exit the program is by click-
         // ing the Exit button. This ensures that Main.exit() will be called so it will write the
         // student records back out to the gradebook database.
-
+        setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 
         // Add panelMain to the View.
         add(panelMain);
@@ -208,7 +217,36 @@ public class View extends JFrame implements ActionListener {
      * End If
      * end actionPerformed
      */
-
+    @Override
+    public void actionPerformed(ActionEvent pEvent) {
+    	if(pEvent.getSource() == mSearchButton) {
+    		int i = 0;
+			mHomeworkText[i].setText(null);
+    		mExamText[i].setText(null);
+    		String lastName = mStudentName.getText();
+    		if(lastName == null) 
+    			messageBox("Please enter the Student's last name");
+    		else {
+    			getMain().search(lastName);
+    			return Student.setCurrStudent(Student);
+    			if(Student == null)
+    				messageBox("Student not found. Try Again");
+    			else
+    				displayStudent(Student.getCurrStudent());
+    		}
+    	}
+    	else if(pEvent.getSource() == mSaveButton) {
+    		if(Student.getCurrStudent != null)
+    			saveStudent(Student.getCurrStudent());
+    		else if(pEvent.getSource() == mClearButton)
+    			clear();
+    		else if(pEvent.getSource()== mExitButton) {
+    			if(Student.getCurrStudent() != null)
+    				saveStudent(Student.getCurrStudent());
+    				getMain().exit();
+    		}
+    	}
+    }
 
     /**
      * clear()
@@ -226,7 +264,12 @@ public class View extends JFrame implements ActionListener {
      *     Set the current Student object in the Student class to null
      * end clear
      */
-
+    void clear() {
+    	mStudentName.setText("");
+    	mExamText.clearNumbers();
+    	mHomeworkText.clearNumbers();
+    	Student.setCurrStudent(null);
+    }
 
     /**
      * clearNumbers()
@@ -234,8 +277,12 @@ public class View extends JFrame implements ActionListener {
      * Clears the homework and exam fields.
      *
      * DO NOT HARCODE THE NUMBER OF HOMEWORKS AND EXAMS
+     * @param mExamText2 
      */   
-
+    void clearNumbers() {
+    	Integer.parseInt(mExamText.setText(""));
+    	
+    }
     /**
      * displayStudent()
      *
