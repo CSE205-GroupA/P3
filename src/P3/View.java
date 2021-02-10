@@ -8,8 +8,9 @@
 // Arizona State University, Tempe, AZ 85287-8809
 // (c) Kevin R. Burger 2014-2021
 //**************************************************************************************************
-package proj3;
+package P3;
 
+import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.BoxLayout;
@@ -25,17 +26,16 @@ import javax.swing.JTextField;
  * interface so that we can respond to user-initiated GUI events.
  */
 public class View extends JFrame implements ActionListener {
-dfkndkjkfjjk
     /**
      * The width of the View frame. Define a private class constant.
      */
-    ???
+	private static final int FRAME_WIDTH = 525;
+	private static final int FRAME_HEIGHT = 225;
 
     /**
      * The height of the View frame. Define a private class constant.
      */
-    ???
-
+    
     /**
      * When the View() ctor is called from Main.run() to create the View, run() passes a reference
      * to the Main object as the argument to View(). We save that reference into mMain and then
@@ -44,13 +44,18 @@ dfkndkjkfjjk
      * mMain is made accessible within this class via accessor/mutator methods getMain() and
      * setMain(). It shall not be directly accessed.
      */
-    ???
+
 
     /*
      * Declare GUI related instance variables for the buttons and text fields.
      */
-    ???
-
+	private JTextField[] mExamText;
+	private JTextField mStudentName;
+	private JTextField[] mHomeworkText;
+	private JButton mClearButton;
+	private JButton mExitButton;
+	private JButton mSaveButton;
+	private JButton mSearchButton;
     /**
      * View()
      *
@@ -60,12 +65,12 @@ dfkndkjkfjjk
      * they may communicate with each other.
      */
     public View(Main pMain) {
-
+    	
         /**
          * Save a reference to the Main object pMain into instance var mMain by calling setMain().
          */
         setMain(pMain);
-
+        
         // PSEUDOCODE:
         // Create a JPanel named panelSearch which uses the FlowLayout
         // Add a JLabel "Student Name: " to panelSearch
@@ -74,7 +79,16 @@ dfkndkjkfjjk
         // Create mSearchButton with the label "Search"
         // Make this View the action listener for the button
         // Add the button to the panel
-        ???
+        JPanel panelSearch = new JPanel(new FlowLayout());
+        JLabel label = new JLabel("Student Name: ");
+        panelSearch.add(label);
+        
+        mStudentName = new JTextField(25);
+        panelSearch.add(mStudentName);
+        
+        mSearchButton = new JButton("Search");
+        panelSearch.add(mSearchButton);
+        mSearchButton.addActionListener(this);
 
         // PSEUDOCODE:
         // Create a JPanel named panelHomework which uses the FlowLayout
@@ -85,14 +99,26 @@ dfkndkjkfjjk
         //     Add mHomeworkText[i] to the panel
         // End For
         // Note: DO NOT HARDCODE THE NUMBER OF HOMEWORK ASSIGNMENTS
-        ???
-
+        int assignments = 5;
+        JPanel panelHomework = new JPanel(new FlowLayout());
+        JLabel homeworkLabel = new JLabel("Homework: ");
+        panelHomework.add(homeworkLabel);
+        mHomeworkText = new JTextField[assignments];
+        
+        for(int i = 0; i < mHomeworkText.length; i++) {
+        	mHomeworkText[i] = new JTextField(assignments);
+        	panelHomework.add(mHomeworkText[i]);
+        }
+        
         // Create the exam panel which contains the "Exam: " label and the two exam text fields.
         // The pseudocode is omitted because this code is very similar to the code that creates the
         // panelHomework panel above.
         // Note: DO NOT HARDCODE THE NUMBER OF EXAMS
-        ???
-
+        int exams = 3;
+        JPanel panelExam = new JPanel(new FlowLayout());
+        JLabel examLabel = new JLabel("Exam: ");
+        panelExam.add(examLabel);
+        mExamText = new JTextField[exams];
         // PSEUDOCODE:
         // Create a JPanel named panelButtons using FlowLayout
         // Create the Clear button mClearButton labeled "Clear"
@@ -100,18 +126,23 @@ dfkndkjkfjjk
         // Add the  Clear button to the panel
         // Repeat the three above statements for the Save button
         // Repeat the three above statements for the Exit button
-        ???
-
+        JPanel panelButtons = new JPanel(new FlowLayout());
+        mClearButton = new JButton("Clear");
+        mSaveButton = new JButton("Save");
+        mExitButton = new JButton("Exit");
+        panelButtons.add(mClearButton);
+        panelButtons.add(mSaveButton);
+        panelButtons.add(mExitButton);
         // PSEUDOCODE:
         // Create a JPanel named panelMain using a vertical BoxLayout
         // Add panelSearch to panelMain.
         // Add panelHomework to panelMain
         // Add panelExam to panelMain
         // Add panelButtons to panelMain
-        ???
-
+        JPanel panelMain = new JPanel();
+        
         // Set the title of the View to whatever you want by calling setTitle()
-        ???
+
 
         // Set the size of the View to FRAME_WIDTH x FRAME_HEIGHT
         setSize(FRAME_WIDTH, FRAME_HEIGHT);
@@ -123,7 +154,7 @@ dfkndkjkfjjk
         // button in the title bar of the View so now the only way to exit the program is by click-
         // ing the Exit button. This ensures that Main.exit() will be called so it will write the
         // student records back out to the gradebook database.
-        ???
+
 
         // Add panelMain to the View.
         add(panelMain);
@@ -177,7 +208,7 @@ dfkndkjkfjjk
      * End If
      * end actionPerformed
      */
-    ???
+
 
     /**
      * clear()
@@ -195,7 +226,7 @@ dfkndkjkfjjk
      *     Set the current Student object in the Student class to null
      * end clear
      */
-    ???
+
 
     /**
      * clearNumbers()
@@ -203,8 +234,7 @@ dfkndkjkfjjk
      * Clears the homework and exam fields.
      *
      * DO NOT HARCODE THE NUMBER OF HOMEWORKS AND EXAMS
-     */
-    ???
+     */   
 
     /**
      * displayStudent()
@@ -226,7 +256,7 @@ dfkndkjkfjjk
      *
      * DO NOT HARCODE THE NUMBER OF HOMEWORKS AND EXAMS
      */
-    ???
+
 
     /**
      * Accessor method for mMain.
@@ -249,7 +279,7 @@ dfkndkjkfjjk
      *     Call JOptionPane.showMessageDialog() to display pMessage.
      * end messageBox
      */
-    ???
+
 
     /**
      * saveStudent()
@@ -268,8 +298,7 @@ dfkndkjkfjjk
      * end method saveStudent
      *
      * DO NOT HARDCODE THE NUMBER OF HOMEWORKS AND EXAMS
-     */
-    ???
+     */ 
 
     /**
      * Mutator method for mMain.
