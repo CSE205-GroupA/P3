@@ -58,8 +58,8 @@ public class Main {
      *     end try-catch
      * end exit
      */
-	void exit() {
-		try {
+	public void exit() {
+		try{
 			GradeBookWriter gbWriter = new GradeBookWriter("gradebook.dat");
 			writeGradeBook(getRoster(gbWriter));
 			System.exit(0);
@@ -73,13 +73,14 @@ public class Main {
      * This method returns the number of exams in the class.
      */
 
-	public int getNumExams() {
-		mExamText.getText();
+	public int getNumExams(){
+		getExamList();
+		return 0;
 	}
     /**
      * This method returns the number of homework assignments in the class.
      */
-	public int getNumHomeworks() {
+	public int getNumHomeworks(){
 		mHomeworkText.getText();
 	}
 
@@ -129,7 +130,7 @@ public class Main {
     	setView(new View(this));
     	
     	try {
-    		
+
     	}
     	catch (FileNotFoundException e){
     		System.exit(-1);
@@ -151,7 +152,7 @@ public class Main {
      */
     public Student search(String pLastName) {
     	getRoster().getStudent(pLastName);
-    	return getStudent();
+    	return getStudent(pLastName);
     }
 
     /**

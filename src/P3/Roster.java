@@ -49,7 +49,7 @@ public class Roster {
      *     add (will append) pStudent to mStudentList
      * end method
      */
-	void addStudent(Student pStudent) {
+	public void addStudent(Student pStudent) {
 		mStudentList.add(pStudent);
 	}
 
