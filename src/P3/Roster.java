@@ -21,7 +21,7 @@ public class Roster {
     /**
      * Declare mStudentList as ArrayList<Student>
      */
-    ???
+	ArrayList<Student> mStudentList = new ArrayList<>();
 
     /**
      * Roster()
@@ -35,7 +35,9 @@ public class Roster {
      *     setStudentList() to make mStudentList refer to the ArrayList
      * end Roster
      */
-    ???
+	public Roster() {
+		ArrayList<Student> pStudentList = new ArrayList<>();
+	}
 
     /**
      * addStudent()
@@ -47,7 +49,9 @@ public class Roster {
      *     add (will append) pStudent to mStudentList
      * end method
      */
-    ???
+	void addStudent(Student pStudent) {
+		mStudentList.add(pStudent);
+	}
 
     /**
      * getStudent()
@@ -65,7 +69,15 @@ public class Roster {
      *     else return the Student object in getStudentList() at index 'index'
      * end getStudent
      */
-    ???
+	public Student getStudent(String pLastName) {
+		int index = 0;
+		mStudentList.get(index);
+		index = Searcher.search(getStudentList(), pLastName);
+		if(index == -1)
+			return null;
+		else
+			return Student.getStudentList(index);
+	}
 
     /**
      * getStudentList()
@@ -104,7 +116,7 @@ public class Roster {
      *     call Sorter.sort() passing the list of students returned from getStudentList()
      * end sortRoster
      */
-    ???
+
 
     /**
      * Returns a String representation of this Roster. toString() methods are very handy for
