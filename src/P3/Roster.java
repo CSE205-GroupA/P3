@@ -37,6 +37,7 @@ public class Roster {
      */
 	public Roster() {
 		ArrayList<Student> pStudentList = new ArrayList<>();
+		setStudentList(pStudentList);
 	}
 
     /**
@@ -69,6 +70,8 @@ public class Roster {
      *     else return the Student object in getStudentList() at index 'index'
      * end getStudent
      */
+//	
+//	this needs work
 	public Student getStudent(String pLastName) {
 		int index = 0;
 		mStudentList.get(index);
@@ -76,7 +79,7 @@ public class Roster {
 		if(index == -1)
 			return null;
 		else
-			return Student.getStudentList();
+			return getStudentList();
 	}
 
     /**

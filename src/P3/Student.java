@@ -27,26 +27,26 @@ public class Student implements Comparable<Student> {
      * mCurrStudent is a reference to the Student object which is currently being displayed and
      * edited in the View. It should only be accessed via accessor/mutator methods.
      */
-
+	static Student mCurrStudent = new Student();
 
     /**
      * mExamList is an ArrayList of Integers storing the student's exam scores.
      */
-
+	ArrayList<Integer> mExamList = new ArrayList<>();
     /**
      * The student's first name.
      */
-
+	String mFirstName;
 
     /**
      * mHomework List is an ArrayList of Integers storing the student's homework scores.
      */
-
+	ArrayList<Integer> mHomeworkList = new ArrayList<>();
 
     /**
      * The student's last name.
      */
-
+	String mLastName;
 
     /**
      * Student()
@@ -118,8 +118,15 @@ public class Student implements Comparable<Student> {
      *     hint: the last names are Strings and String already implements compareTo().
      * end compareTo
      */
+	
+	//needs to be finished
 	public int compareTo(Student pStudent) {
-		
+		if()
+			return -1;
+		if()
+			return 0;
+		if()
+			return 1;
 	}
 
     /**
@@ -281,4 +288,9 @@ public class Student implements Comparable<Student> {
      * Hint: use enhanced for loops
      */
     
+    //needs to be finished
+    @Override
+    public String toString() {
+
+    }
 }
