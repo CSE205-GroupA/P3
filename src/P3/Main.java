@@ -29,18 +29,19 @@ public class Main {
      * The Roster of students that is read from the input file "gradebook.dat".
      */
 	private Roster mRoster;
-	private View mView;
+
 	
     /**
      * A reference to the View object.
      */
-
+	private View mView;
 
     /**
      * This is where execution starts. Instantiate a Main object and then call run().
      */
 	public static void main(String[] args) {
-		run();
+		Main mainObject = new Main();
+	    mainObject.run();    
 	}
 
     /**
@@ -67,28 +68,32 @@ public class Main {
      */
 	public void exit() {
 		try{
-			GradeBookWriter gbWriter = new GradeBookWriter("gradebook.dat");
-			writeGradeBook(getRoster(gbWriter));
+			GradebookWriter gbWriter = new GradebookWriter("gradebook.dat");
+			gbWriter.writeGradebook(getRoster());
 			System.exit(0);
+			gbWriter.close();
 		}
 		catch (FileNotFoundException e){
 			getView().messageBox("Could not open gradebook.dat for writing. Exiting without saving.");
 			System.exit(-1);
 		}
 	}
+	
     /**
      * This method returns the number of exams in the class.
      */
 
-	public int getNumExams(){
-		getExamList();
-		return 0;
+	public static int getNumExams(){
+		final int NUM_EXAMS = 3;
+		return NUM_EXAMS;
 	}
+	
     /**
      * This method returns the number of homework assignments in the class.
      */
-	public int getNumHomeworks(){
-		mHomeworkText.getText();
+	public static int getNumHomeworks(){
+		final int NUM_HOMEWORKS = 5;
+		return NUM_HOMEWORKS;
 	}
 
     /**
@@ -130,6 +135,7 @@ public class Main {
      *     end try-catch
      * end run
      */
+    
     public void run() {
     	JFrame.setDefaultLookAndFeelDecorated(true);
     	View myView = new View(this);
@@ -137,6 +143,8 @@ public class Main {
     	setView(new View(this));
     	
     	try {
+    		GradebookReader gbReader = new GradebookReader("gradebook.dat");
+    		setRoster(gbReader.readGradebook());
 
     	}
     	catch (FileNotFoundException e){
@@ -158,8 +166,7 @@ public class Main {
      * end search
      */
     public Student search(String pLastName) {
-    	getRoster().getStudent(pLastName);
-    	return getStudent(pLastName);
+    	return getRoster().getStudent(pLastName);
     }
 
     /**

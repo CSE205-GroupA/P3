@@ -26,7 +26,7 @@ import java.util.Scanner;
  * Once the input file has been read, it will return a Roster object containing the list of
  * Students in the course.
  */
-public class GradebookReader  {
+public class GradebookReader {
 
     /**
      * mIn is used to read from the input file.

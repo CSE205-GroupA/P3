@@ -37,13 +37,13 @@ public class View extends JFrame implements ActionListener {
      * The width of the View frame. Define a private class constant.
      */
 	private static final int FRAME_WIDTH = 525;
-	private static final int FRAME_HEIGHT = 225;
 
     /**
      * The height of the View frame. Define a private class constant.
      */
+	private static final int FRAME_HEIGHT = 225;
     
-    /**
+	/**
      * When the View() ctor is called from Main.run() to create the View, run() passes a reference
      * to the Main object as the argument to View(). We save that reference into mMain and then
      * later we can use mMain to communicate with the Main class.
@@ -51,7 +51,7 @@ public class View extends JFrame implements ActionListener {
      * mMain is made accessible within this class via accessor/mutator methods getMain() and
      * setMain(). It shall not be directly accessed.
      */
-
+	private Main mMain;
 
     /*
      * Declare GUI related instance variables for the buttons and text fields.
@@ -234,9 +234,8 @@ public class View extends JFrame implements ActionListener {
     		if(lastName == null) 
     			messageBox("Please enter the Student's last name");
     		else {
-    			getMain().search(lastName);
-    			return Student.setCurrStudent(Student);
-    			if(Student == null)
+    			Student mStudent = mMain.search(lastName);
+    			if(mStudent == null)
     				messageBox("Student not found. Try Again");
     			else
     				displayStudent(Student.getCurrStudent());
@@ -273,8 +272,7 @@ public class View extends JFrame implements ActionListener {
      */
     void clear() {
     	mStudentName.setText("");
-    	mExamText.clearNumbers();
-    	mHomeworkText.clearNumbers();
+    	clearNumbers();
     	Student.setCurrStudent(null);
     }
 
@@ -287,10 +285,12 @@ public class View extends JFrame implements ActionListener {
      * @param mExamText2 
      */   
     void clearNumbers() {
-    	int i = 0;
+    	for(int i = 0; i < Main.getNumExams() - 1; i++) {
     	mExamText[i].setText("");
+    	}
+    	for(int i = 0; i < Main.getNumHomeworks() - 1; i++) {
     	mHomeworkText[i].setText("");
-    	
+    	}
     }
     /**
      * displayStudent()

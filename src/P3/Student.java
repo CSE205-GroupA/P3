@@ -28,32 +28,30 @@ import java.util.ArrayList;
  * compareTo() method.
  */
 public class Student implements Comparable<Student> {
-	private String pLastName;
-	private String pFirstName;
     /**
      * mCurrStudent is a reference to the Student object which is currently being displayed and
      * edited in the View. It should only be accessed via accessor/mutator methods.
      */
-	static Student mCurrStudent = new Student();
+	private static Student mCurrStudent;
 
     /**
      * mExamList is an ArrayList of Integers storing the student's exam scores.
      */
-	ArrayList<Integer> mExamList = new ArrayList<>();
+	private ArrayList<Integer> mExamList;
     /**
      * The student's first name.
      */
-	String mFirstName;
+	private String mFirstName;
 
     /**
      * mHomework List is an ArrayList of Integers storing the student's homework scores.
      */
-	ArrayList<Integer> mHomeworkList = new ArrayList<>();
+	private ArrayList<Integer> mHomeworkList;
 
     /**
      * The student's last name.
      */
-	String mLastName;
+	private String mLastName;
 
     /**
      * Student()
@@ -67,9 +65,11 @@ public class Student implements Comparable<Student> {
      *     create an ArrayList<Integer> and pass it off to setHomeworkList()
      * end Student()
      */
-	public void Student(String pFirstName, String pLastName) {
-		ArrayList<Integer> examList = new ArrayList<>();
-		ArrayList<Integer> homeworkList = new ArrayList<>();
+	public Student(String pFirstName, String pLastName) {
+		mFirstName = pFirstName;
+		mLastName = pLastName;
+		mExamList = new ArrayList<>();
+		mHomeworkList = new ArrayList<>();
 	}
 
     /**
@@ -126,14 +126,14 @@ public class Student implements Comparable<Student> {
      * end compareTo
      */
 	
-	//needs to be finished
+
 	public int compareTo(Student pStudent) {
-		if()
+		if (getLastName().compareTo(pStudent.getLastName())<0)
 			return -1;
-		if()
-			return 0;
-		if()
+		else if(getLastName().compareTo(pStudent.getLastName())>0)
 			return 1;
+		else
+			return 0;
 	}
 
     /**
@@ -179,7 +179,10 @@ public class Student implements Comparable<Student> {
      *
      * Returns the student's full name in the format: "lastname, firstname".
      */
-
+    public String getFullName() {
+    	String fullName = getLastName() + ", " + getFirstName();
+    	return fullName;
+    }
 
     /**
      * getHomework()
@@ -298,6 +301,14 @@ public class Student implements Comparable<Student> {
     //needs to be finished
     @Override
     public String toString() {
-
-    }
+    	String temp = new String();
+		temp += String.format("%n", getLastName(), getFirstName());
+		for(Integer tempInt : mExamList ) {
+			temp += String.format("%n", tempInt);
+		}
+		for(Integer tempInt : mHomeworkList ) {
+			temp += String.format("%n", tempInt);
+		}
+		return temp;
+	}
 }

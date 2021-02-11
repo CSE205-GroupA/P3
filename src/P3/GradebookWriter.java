@@ -17,7 +17,6 @@
  ********************************************************************************************************/
 package P3;
 
-import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 
@@ -27,7 +26,7 @@ import java.io.PrintWriter;
  */
 public class GradebookWriter extends PrintWriter {
 
-    public GradebookWriter(File pFname) throws FileNotFoundException {
+    public GradebookWriter(String pFname) throws FileNotFoundException {
 		super(pFname);
 	}
 
