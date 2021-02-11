@@ -236,7 +236,7 @@ public class View extends JFrame implements ActionListener {
     		}
     	}
     	else if(pEvent.getSource() == mSaveButton) {
-    		if(Student.getCurrStudent != null)
+    		if(Student.getCurrStudent() != null)
     			saveStudent(Student.getCurrStudent());
     		else if(pEvent.getSource() == mClearButton)
     			clear();
@@ -306,12 +306,12 @@ public class View extends JFrame implements ActionListener {
      * DO NOT HARCODE THE NUMBER OF HOMEWORKS AND EXAMS
      */
     void displayStudent(Student pStudent) {
-    	for(int i = 0; i < Main.getNumHomeworks - 1; i++) {
+    	for(int i = 0; i < Main.getNumHomeworks() - 1; i++) {
     		int hw = pStudent.getHomework(i);
     		String hwstr = Integer.toString(hw);
     		mHomeworkText[i].setText(hwstr);
     	}
-    	for(int i = 0; i < Main.getNumExams - 1; i++) {
+    	for(int i = 0; i < Main.getNumExams() - 1; i++) {
     		int ex = pStudent.getExam(i);
     		String exstr = Integer.toString(ex);
     		mExamText[i].setText(exstr);
