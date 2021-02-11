@@ -1,20 +1,13 @@
-/********************************************************************************************************* 
- * CLASS: Main (Main.java) 
- * 
- * DESCRIPTION 
- * Main Driver File
- * 
- * 
- * COURSE AND PROJECT INFORMATION 
- * CSE205 Object Oriented Programming and Data Structures, Spring 2021
- * Project Number: p3
- *
- * GROUP INFORMATION  
- * AUTHOR 1: Brandon Murata, bmurata1, bmurata1@asu.edu
- * AUTHOR 2: Brandon Billmeyer, bbillmey , bbillmey@asu.edu
- * AUTHOR 3: Delaney Claussen , djclaus1, djclaus1@asu.edu
- * AUTHOR 4: Taylor Hedrick, tmhedric, tmhedric@asu.edu
- ********************************************************************************************************/
+//**************************************************************************************************
+// CLASS: Main
+//
+// AUTHOR
+// Kevin R. Burger (burgerk@asu.edu)
+// Computer Science & Engineering Program
+// Fulton Schools of Engineering
+// Arizona State University, Tempe, AZ 85287-8809
+// (c) Kevin R. Burger 2014-2021
+//**************************************************************************************************
 package P3;
 
 import java.io.FileNotFoundException;
@@ -28,17 +21,20 @@ public class Main {
     /**
      * The Roster of students that is read from the input file "gradebook.dat".
      */
-    ???
-
+	private Roster mRoster;
+	private View mView;
+	
     /**
      * A reference to the View object.
      */
-    ???
+
 
     /**
      * This is where execution starts. Instantiate a Main object and then call run().
      */
-    ???
+	public static void main(String[] args) {
+		run();
+	}
 
     /**
      * exit() is called when the Exit button in the View is clicked. When we exit we have to write
@@ -62,17 +58,31 @@ public class Main {
      *     end try-catch
      * end exit
      */
-    ???
-
+	public void exit() {
+		try{
+			GradeBookWriter gbWriter = new GradeBookWriter("gradebook.dat");
+			writeGradeBook(getRoster(gbWriter));
+			System.exit(0);
+		}
+		catch (FileNotFoundException e){
+			getView().messageBox("Could not open gradebook.dat for writing. Exiting without saving.");
+			System.exit(-1);
+		}
+	}
     /**
      * This method returns the number of exams in the class.
      */
-    ???
 
+	public int getNumExams(){
+		getExamList();
+		return 0;
+	}
     /**
      * This method returns the number of homework assignments in the class.
      */
-    ???
+	public int getNumHomeworks(){
+		mHomeworkText.getText();
+	}
 
     /**
      * Accessor method for mRoster.
@@ -113,7 +123,19 @@ public class Main {
      *     end try-catch
      * end run
      */
-    ???
+    public void run() {
+    	JFrame.setDefaultLookAndFeelDecorated(true);
+    	View myView = new View(this);
+    	setView(myView);
+    	setView(new View(this));
+    	
+    	try {
+
+    	}
+    	catch (FileNotFoundException e){
+    		System.exit(-1);
+    	}
+    }
 
     /**
      * search() is called when the Search button is clicked in the View. The input parameter is
@@ -128,7 +150,10 @@ public class Main {
      *     call getRoster().getStudent(pLastName) and return what getStudent() returns
      * end search
      */
-    ???
+    public Student search(String pLastName) {
+    	getRoster().getStudent(pLastName);
+    	return getStudent(pLastName);
+    }
 
     /**
      * Mutator method for mRoster.

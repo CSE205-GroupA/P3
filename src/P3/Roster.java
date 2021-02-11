@@ -49,7 +49,7 @@ public class Roster {
      *     add (will append) pStudent to mStudentList
      * end method
      */
-	void addStudent(Student pStudent) {
+	public void addStudent(Student pStudent) {
 		mStudentList.add(pStudent);
 	}
 
@@ -76,7 +76,7 @@ public class Roster {
 		if(index == -1)
 			return null;
 		else
-			return Student.getStudentList(index);
+			return getStudentList();
 	}
 
     /**
@@ -116,7 +116,9 @@ public class Roster {
      *     call Sorter.sort() passing the list of students returned from getStudentList()
      * end sortRoster
      */
-
+    void sortRoster() {
+    	Sorter.sort(mStudentList);
+    }
 
     /**
      * Returns a String representation of this Roster. toString() methods are very handy for

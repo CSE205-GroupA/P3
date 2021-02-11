@@ -1,20 +1,13 @@
-/********************************************************************************************************* 
- * CLASS: Student (Student.java) 
- * 
- * DESCRIPTION 
- * Student Driver File
- * 
- * 
- * COURSE AND PROJECT INFORMATION 
- * CSE205 Object Oriented Programming and Data Structures, Spring 2021
- * Project Number: p3
- *
- * GROUP INFORMATION  
- * AUTHOR 1: Brandon Murata, bmurata1, bmurata1@asu.edu
- * AUTHOR 2: Brandon Billmeyer, bbillmey , bbillmey@asu.edu
- * AUTHOR 3: Delaney Claussen , djclaus1, djclaus1@asu.edu
- * AUTHOR 4: Taylor Hedrick, tmhedric, tmhedric@asu.edu
- ********************************************************************************************************/
+//**************************************************************************************************
+// CLASS: Student
+//
+// AUTHOR
+// Kevin R. Burger (burgerk@asu.edu)
+// Computer Science & Engineering Program
+// Fulton Schools of Engineering
+// Arizona State University, Tempe, AZ 85287-8809
+// (c) Kevin R. Burger 2014-2021
+//**************************************************************************************************
 package P3;
 
 import java.util.ArrayList;
@@ -33,27 +26,26 @@ public class Student implements Comparable<Student> {
      * mCurrStudent is a reference to the Student object which is currently being displayed and
      * edited in the View. It should only be accessed via accessor/mutator methods.
      */
-    ???
+
 
     /**
      * mExamList is an ArrayList of Integers storing the student's exam scores.
      */
-    ???
 
     /**
      * The student's first name.
      */
-    ???
+
 
     /**
      * mHomework List is an ArrayList of Integers storing the student's homework scores.
      */
-    ???
+
 
     /**
      * The student's last name.
      */
-    ???
+
 
     /**
      * Student()
@@ -67,7 +59,7 @@ public class Student implements Comparable<Student> {
      *     create an ArrayList<Integer> and pass it off to setHomeworkList()
      * end Student()
      */
-    ???
+
 
     /**
      * addExam()
@@ -81,7 +73,7 @@ public class Student implements Comparable<Student> {
      *     call add(pScore) on getExamList() to add a new exam score to the list of exam scores.
      * end addExam
      */
-    ???
+
 
     /**
      * addHomework()
@@ -96,7 +88,7 @@ public class Student implements Comparable<Student> {
      *     homework scores
      * end addHomework
      */
-    ???
+
 
     /**
      * compareTo()
@@ -118,7 +110,7 @@ public class Student implements Comparable<Student> {
      *     hint: the last names are Strings and String already implements compareTo().
      * end compareTo
      */
-    ???
+
 
     /**
      * Accessor method for mCurrStudent.
@@ -163,7 +155,7 @@ public class Student implements Comparable<Student> {
      *
      * Returns the student's full name in the format: "lastname, firstname".
      */
-    ???
+
 
     /**
      * getHomework()
@@ -262,6 +254,12 @@ public class Student implements Comparable<Student> {
         mLastName = pLastName;
     }
 
+	@Override
+	public int compareTo(Student pStudent) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
     /**
      * toString()
      *
@@ -277,5 +275,5 @@ public class Student implements Comparable<Student> {
      *
      * Hint: use enhanced for loops
      */
-    ???
+
 }
