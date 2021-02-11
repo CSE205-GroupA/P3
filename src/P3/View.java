@@ -1,20 +1,13 @@
-/********************************************************************************************************* 
- * CLASS: View (View.java) 
- * 
- * DESCRIPTION 
- * View Driver File
- * 
- * 
- * COURSE AND PROJECT INFORMATION 
- * CSE205 Object Oriented Programming and Data Structures, Spring 2021
- * Project Number: p3
- *
- * GROUP INFORMATION  
- * AUTHOR 1: Brandon Murata, bmurata1, bmurata1@asu.edu
- * AUTHOR 2: Brandon Billmeyer, bbillmey , bbillmey@asu.edu
- * AUTHOR 3: Delaney Claussen , djclaus1, djclaus1@asu.edu
- * AUTHOR 4: Taylor Hedrick, tmhedric, tmhedric@asu.edu
- ********************************************************************************************************/
+//**************************************************************************************************
+// CLASS: View
+//
+// AUTHOR
+// Kevin R. Burger (burgerk@asu.edu)
+// Computer Science & Engineering Program
+// Fulton Schools of Engineering
+// Arizona State University, Tempe, AZ 85287-8809
+// (c) Kevin R. Burger 2014-2021
+//**************************************************************************************************
 package P3;
 
 import java.awt.FlowLayout;
@@ -243,7 +236,7 @@ public class View extends JFrame implements ActionListener {
     		}
     	}
     	else if(pEvent.getSource() == mSaveButton) {
-    		if(Student.getCurrStudent != null)
+    		if(Student.getCurrStudent() != null)
     			saveStudent(Student.getCurrStudent());
     		else if(pEvent.getSource() == mClearButton)
     			clear();
@@ -313,12 +306,12 @@ public class View extends JFrame implements ActionListener {
      * DO NOT HARCODE THE NUMBER OF HOMEWORKS AND EXAMS
      */
     void displayStudent(Student pStudent) {
-    	for(int i = 0; i < Main.getNumHomeworks - 1; i++) {
+    	for(int i = 0; i < Main.getNumHomeworks() - 1; i++) {
     		int hw = pStudent.getHomework(i);
     		String hwstr = Integer.toString(hw);
     		mHomeworkText[i].setText(hwstr);
     	}
-    	for(int i = 0; i < Main.getNumExams - 1; i++) {
+    	for(int i = 0; i < Main.getNumExams() - 1; i++) {
     		int ex = pStudent.getExam(i);
     		String exstr = Integer.toString(ex);
     		mExamText[i].setText(exstr);
