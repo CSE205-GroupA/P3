@@ -76,7 +76,7 @@ public class Roster {
 		if(index == -1)
 			return null;
 		else
-			return getStudentList();
+			return Student.getStudentList();
 	}
 
     /**

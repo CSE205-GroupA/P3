@@ -21,7 +21,8 @@ import java.util.ArrayList;
  * compareTo() method.
  */
 public class Student implements Comparable<Student> {
-
+	private String pLastName;
+	private String pFirstName;
     /**
      * mCurrStudent is a reference to the Student object which is currently being displayed and
      * edited in the View. It should only be accessed via accessor/mutator methods.
@@ -59,7 +60,10 @@ public class Student implements Comparable<Student> {
      *     create an ArrayList<Integer> and pass it off to setHomeworkList()
      * end Student()
      */
-
+	public void Student(String pFirstName, String pLastName) {
+		ArrayList<Integer> examList = new ArrayList<>();
+		ArrayList<Integer> homeworkList = new ArrayList<>();
+	}
 
     /**
      * addExam()
@@ -73,7 +77,9 @@ public class Student implements Comparable<Student> {
      *     call add(pScore) on getExamList() to add a new exam score to the list of exam scores.
      * end addExam
      */
-
+	public void addExam(int pScore) {
+		getExamList().add(pScore);
+	}
 
     /**
      * addHomework()
@@ -88,7 +94,9 @@ public class Student implements Comparable<Student> {
      *     homework scores
      * end addHomework
      */
-
+	public void addHomework(int pScore) {
+		getHomeworkList().add(pScore);
+	}
 
     /**
      * compareTo()
@@ -110,7 +118,9 @@ public class Student implements Comparable<Student> {
      *     hint: the last names are Strings and String already implements compareTo().
      * end compareTo
      */
-
+	public int compareTo(Student pStudent) {
+		
+	}
 
     /**
      * Accessor method for mCurrStudent.
@@ -254,11 +264,6 @@ public class Student implements Comparable<Student> {
         mLastName = pLastName;
     }
 
-	@Override
-	public int compareTo(Student pStudent) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
 
     /**
      * toString()
@@ -275,5 +280,5 @@ public class Student implements Comparable<Student> {
      *
      * Hint: use enhanced for loops
      */
-
+    
 }
