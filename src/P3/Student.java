@@ -290,7 +290,7 @@ public class Student implements Comparable<Student> {
      * Returns a String representation of this Student. The format of the returned string shall be
      * such that the Student information can be printed to the output file in this format:
      *
-     *     lastname firstname exam1 exam2 exam2 hw1 hw2 hw3 hw4 hw5
+     *     lastname firstname exam1 exam2 exam3 hw1 hw2 hw3 hw4 hw5
      *
      * where the fields are separated by spaces, except there is not space following hw5.
      *
@@ -300,18 +300,17 @@ public class Student implements Comparable<Student> {
      * Hint: use enhanced for loops
      */
     
-    /*/needs to be finished
+    //needs to be finished
     @Override
     public String toString() {
     	String temp = new String();
-		temp += String.format("%s", getFullName());
+		temp += String.format("%s %s", getLastName(), getFirstName());
 		for(Integer tempInt : mExamList ) {
-			temp += String.format("%n", tempInt);
+			temp += String.format(" %s", tempInt.toString());
 		}
 		for(Integer tempInt : mHomeworkList ) {
-			temp += String.format("%n", tempInt);
+			temp += String.format(" %s", tempInt.toString().trim());
 		}
 		return temp;
 	}
-*/
 }
