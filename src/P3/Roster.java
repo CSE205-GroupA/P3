@@ -79,9 +79,7 @@ public class Roster {
      */
 
 	public Student getStudent(String pLastName) {
-		int index = 0;
-		mStudentList.get(index);
-		index = Searcher.search(getStudentList(), pLastName);
+		int index = Searcher.search(getStudentList(), pLastName);
 		if(index == -1)
 			return null;
 		else

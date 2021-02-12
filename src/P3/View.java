@@ -95,8 +95,9 @@ public class View extends JFrame implements ActionListener {
         panelSearch.add(mStudentName);
         
         mSearchButton = new JButton("Search");
-        panelSearch.add(mSearchButton);
         mSearchButton.addActionListener(this);
+        panelSearch.add(mSearchButton);
+        
 
         // PSEUDOCODE:
         // Create a JPanel named panelHomework which uses the FlowLayout
@@ -129,6 +130,7 @@ public class View extends JFrame implements ActionListener {
         	mExamText[i] = new JTextField(Main.getNumExams());
         	panelExam.add(mExamText[i]);
         }
+        
         // PSEUDOCODE:
         // Create a JPanel named panelButtons using FlowLayout
         // Create the Clear button mClearButton labeled "Clear"
@@ -160,6 +162,7 @@ public class View extends JFrame implements ActionListener {
         panelMain.add(panelHomework);
         panelMain.add(panelExam);
         panelMain.add(panelButtons);
+        
         // Set the title of the View to whatever you want by calling setTitle()
         setTitle("Grade Book Editor");
 
@@ -240,22 +243,21 @@ public class View extends JFrame implements ActionListener {
     				messageBox("Student not found. Try Again");
     			} else {
     				displayStudent(Student.getCurrStudent());
-    		}
+    			}
     		}	
-    	}
-    	else if(pEvent.getSource() == mSaveButton) {
+    	} else if(pEvent.getSource() == mSaveButton) {
     		if(Student.getCurrStudent() != null) {
     			saveStudent(Student.getCurrStudent());
+    		}
     		} else if(pEvent.getSource() == mClearButton) {
     			clear();
     		} else if(pEvent.getSource() == mExitButton) {
     			if(Student.getCurrStudent() != null) {
     				saveStudent(Student.getCurrStudent());
-    				getMain().exit();
     			}
+    			getMain().exit();
     		}
     	}
-    }
 
     /**
      * clear()
@@ -315,7 +317,7 @@ public class View extends JFrame implements ActionListener {
      *
      * DO NOT HARCODE THE NUMBER OF HOMEWORKS AND EXAMS
      */
-    void displayStudent(Student pStudent) {
+    private void displayStudent(Student pStudent) {
     	for(int i = 0; i < Main.getNumHomeworks() - 1; i++) {
     		int hw = pStudent.getHomework(i);
     		String hwstr = Integer.toString(hw);
