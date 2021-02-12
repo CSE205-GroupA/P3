@@ -290,10 +290,10 @@ public class View extends JFrame implements ActionListener {
      * @param mExamText2 
      */   
     void clearNumbers() {
-    	for(int i = 0; i < Main.getNumExams() - 1; i++) {
+    	for(int i = 0; i < Main.getNumExams(); i++) {
     	mExamText[i].setText("");
     	}
-    	for(int i = 0; i < Main.getNumHomeworks() - 1; i++) {
+    	for(int i = 0; i < Main.getNumHomeworks(); i++) {
     	mHomeworkText[i].setText("");
     	}
     }
@@ -318,12 +318,13 @@ public class View extends JFrame implements ActionListener {
      * DO NOT HARCODE THE NUMBER OF HOMEWORKS AND EXAMS
      */
     private void displayStudent(Student pStudent) {
-    	for(int i = 0; i < Main.getNumHomeworks() - 1; i++) {
+    	mStudentName.setText(pStudent.getFullName());
+    	for(int i = 0; i < Main.getNumHomeworks(); i++) {
     		int hw = pStudent.getHomework(i);
     		String hwstr = Integer.toString(hw);
     		mHomeworkText[i].setText(hwstr);
     	}
-    	for(int i = 0; i < Main.getNumExams() - 1; i++) {
+    	for(int i = 0; i < Main.getNumExams(); i++) {
     		int ex = pStudent.getExam(i);
     		String exstr = Integer.toString(ex);
     		mExamText[i].setText(exstr);
@@ -374,12 +375,12 @@ public class View extends JFrame implements ActionListener {
      * DO NOT HARDCODE THE NUMBER OF HOMEWORKS AND EXAMS
      */ 
     void saveStudent(Student pStudent) {
-    	for(int i = 0; i < Main.getNumHomeworks() - 1; i++) {
+    	for(int i = 0; i < Main.getNumHomeworks(); i++) {
     		String hwstr = mHomeworkText[i].getText();
     		int hw = Integer.parseInt(hwstr);
     		pStudent.setHomework(i, hw);
     	}
-    	for(int i = 0; i < Main.getNumExams() - 1; i++) {
+    	for(int i = 0; i < Main.getNumExams(); i++) {
     		String exstr = mExamText[i].getText();
     		int ex = Integer.parseInt(exstr);
     		pStudent.setHomework(i, ex);

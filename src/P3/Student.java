@@ -300,11 +300,11 @@ public class Student implements Comparable<Student> {
      * Hint: use enhanced for loops
      */
     
-    //needs to be finished
+    /*/needs to be finished
     @Override
     public String toString() {
     	String temp = new String();
-		temp += String.format("%n", getLastName(), getFirstName());
+		temp += String.format("%s", getFullName());
 		for(Integer tempInt : mExamList ) {
 			temp += String.format("%n", tempInt);
 		}
@@ -313,4 +313,5 @@ public class Student implements Comparable<Student> {
 		}
 		return temp;
 	}
+*/
 }
