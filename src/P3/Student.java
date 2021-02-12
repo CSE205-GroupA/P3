@@ -300,7 +300,6 @@ public class Student implements Comparable<Student> {
      * Hint: use enhanced for loops
      */
     
-    //needs to be finished
     @Override
     public String toString() {
     	String temp = new String();
