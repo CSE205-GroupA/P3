@@ -66,10 +66,12 @@ public class Student implements Comparable<Student> {
      * end Student()
      */
 	public Student(String pFirstName, String pLastName) {
-		mFirstName = pFirstName;
-		mLastName = pLastName;
-		mExamList = new ArrayList<>();
-		mHomeworkList = new ArrayList<>();
+		setFirstName(pFirstName);
+		setLastName(pLastName);
+		ArrayList<Integer> pExamList = new ArrayList<>();
+		setExamList(pExamList);
+		ArrayList<Integer> pHomeworkList = new ArrayList<>();
+		setHomeworkList(pHomeworkList);
 	}
 
     /**
@@ -202,7 +204,7 @@ public class Student implements Comparable<Student> {
      *
      * Accessor method for mHomeworkList.
      */
-    private ArrayList<Integer> getHomeworkList() {
+    protected ArrayList<Integer> getHomeworkList() {
         return mHomeworkList;
     }
 
@@ -238,7 +240,7 @@ public class Student implements Comparable<Student> {
      *
      * Mutator method for mExamList.
      */
-    private void setExamList(ArrayList<Integer> pExamList) {
+    protected void setExamList(ArrayList<Integer> pExamList) {
         mExamList = pExamList;
     }
 
@@ -268,7 +270,7 @@ public class Student implements Comparable<Student> {
      *
      * Mutator method for mHomeworkList.
      */
-    private void setHomeworkList(ArrayList<Integer> pHomeworkList) {
+    protected void setHomeworkList(ArrayList<Integer> pHomeworkList) {
         mHomeworkList = pHomeworkList;
     }
 

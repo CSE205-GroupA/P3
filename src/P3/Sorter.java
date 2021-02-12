@@ -23,12 +23,15 @@ public class Sorter {
 	
 	private static int partition(ArrayList<Student> pList, int pFromIdx, int pToIdx) {
 		String pivot = pList.get(pFromIdx).getLastName();
-		
+		pFromIdx--;
+		pToIdx++;
 		while (pFromIdx < pToIdx) {
-			while (pList.get(pFromIdx).getLastName().compareTo(pivot)<0) {
+			pFromIdx++;
+			while (((pList.get(pFromIdx).getLastName()).compareTo(pivot)<0)) {
 				pFromIdx++;
 			}
-			while (pList.get(pToIdx).getLastName().compareTo(pivot)>0) {
+			pToIdx--;
+			while (((pList.get(pToIdx).getLastName()).compareTo(pivot)>0)) {
 				pToIdx--;
 			}
 			if (pFromIdx < pToIdx) {
@@ -38,7 +41,7 @@ public class Sorter {
 		return pFromIdx;
 	}
 	private static void quickSort(ArrayList<Student> pList, int pFromIdx, int pToIdx) {
-		if(pFromIdx > pToIdx) {
+		if(pFromIdx >= pToIdx) {
 			return;
 		}
 		int partition = partition(pList, pFromIdx, pToIdx);

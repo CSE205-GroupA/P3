@@ -28,7 +28,7 @@ public class Roster {
     /**
      * Declare mStudentList as ArrayList<Student>
      */
-	ArrayList<Student> mStudentList = new ArrayList<>();
+	private ArrayList<Student> mStudentList;
 
     /**
      * Roster()
@@ -43,8 +43,8 @@ public class Roster {
      * end Roster
      */
 	public Roster() {
-		ArrayList<Student> pStudentList = new ArrayList<>();
-		setStudentList(pStudentList);
+		mStudentList = new ArrayList<>();
+		setStudentList(mStudentList);
 	}
 
     /**

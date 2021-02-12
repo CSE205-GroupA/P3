@@ -17,6 +17,7 @@
  ********************************************************************************************************/
 package P3;
 
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
@@ -110,6 +111,8 @@ public class GradebookReader {
             readExam(student);
             readHomework(student);
             roster.addStudent(student);
+            System.out.print(roster);
+
         }
         return roster;
     }

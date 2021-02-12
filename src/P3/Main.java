@@ -138,14 +138,11 @@ public class Main {
     
     public void run() {
     	JFrame.setDefaultLookAndFeelDecorated(true);
-    	View myView = new View(this);
-    	setView(myView);
     	setView(new View(this));
     	
     	try {
     		GradebookReader gbReader = new GradebookReader("gradebook.dat");
     		setRoster(gbReader.readGradebook());
-
     	}
     	catch (FileNotFoundException e){
     		System.exit(-1);

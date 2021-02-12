@@ -22,8 +22,8 @@ import java.util.ArrayList;
 public class Searcher {
 	public static int search(ArrayList<Student> pList, String pKey) {
 	      for (int i = 0; i < pList.size(); i++) {  
-	    	  if (pList.get(i).getLastName().equals(pKey)) { 
-	        	 return pList.indexOf(i); 
+	    	  if ((pList.get(i).getLastName()).equals(pKey)) { 
+	        	 return i; 
 	          }
 	      }
 	      return -1;

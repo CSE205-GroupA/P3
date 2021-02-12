@@ -63,6 +63,7 @@ public class View extends JFrame implements ActionListener {
 	private JButton mExitButton;
 	private JButton mSaveButton;
 	private JButton mSearchButton;
+	
     /**
      * View()
      *
@@ -106,14 +107,13 @@ public class View extends JFrame implements ActionListener {
         //     Add mHomeworkText[i] to the panel
         // End For
         // Note: DO NOT HARDCODE THE NUMBER OF HOMEWORK ASSIGNMENTS
-        int assignments = 5;
         JPanel panelHomework = new JPanel(new FlowLayout());
         JLabel homeworkLabel = new JLabel("Homework: ");
         panelHomework.add(homeworkLabel);
-        mHomeworkText = new JTextField[assignments];
+        mHomeworkText = new JTextField[Main.getNumHomeworks()];
         
-        for(int i = 0; i < mHomeworkText.length; i++) {
-        	mHomeworkText[i] = new JTextField(assignments);
+        for(int i = 0; i < Main.getNumHomeworks(); i++) {
+        	mHomeworkText[i] = new JTextField(Main.getNumHomeworks());
         	panelHomework.add(mHomeworkText[i]);
         }
         
@@ -121,13 +121,12 @@ public class View extends JFrame implements ActionListener {
         // The pseudocode is omitted because this code is very similar to the code that creates the
         // panelHomework panel above.
         // Note: DO NOT HARDCODE THE NUMBER OF EXAMS
-        int exams = 3;
         JPanel panelExam = new JPanel(new FlowLayout());
         JLabel examLabel = new JLabel("Exam: ");
         panelExam.add(examLabel);
-        mExamText = new JTextField[exams];
-        for(int i = 0; i < mExamText.length; i++) {
-        	mExamText[i] = new JTextField(exams);
+        mExamText = new JTextField[Main.getNumExams()];
+        for(int i = 0; i < Main.getNumExams(); i++) {
+        	mExamText[i] = new JTextField(Main.getNumExams());
         	panelExam.add(mExamText[i]);
         }
         // PSEUDOCODE:
@@ -139,11 +138,15 @@ public class View extends JFrame implements ActionListener {
         // Repeat the three above statements for the Exit button
         JPanel panelButtons = new JPanel(new FlowLayout());
         mClearButton = new JButton("Clear");
-        mSaveButton = new JButton("Save");
-        mExitButton = new JButton("Exit");
+        mClearButton.addActionListener(this);
         panelButtons.add(mClearButton);
+        mSaveButton = new JButton("Save");
+        mSaveButton.addActionListener(this);
         panelButtons.add(mSaveButton);
-        panelButtons.add(mExitButton);
+        mExitButton = new JButton("Exit");
+        mExitButton.addActionListener(this);
+        panelButtons.add(mExitButton);     
+               
         // PSEUDOCODE:
         // Create a JPanel named panelMain using a vertical BoxLayout
         // Add panelSearch to panelMain.
@@ -227,29 +230,29 @@ public class View extends JFrame implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent pEvent) {
     	if(pEvent.getSource() == mSearchButton) {
-    		int i = 0;
-			mHomeworkText[i].setText(null);
-    		mExamText[i].setText(null);
+			clearNumbers();
     		String lastName = mStudentName.getText();
-    		if(lastName == null) 
+    		if(lastName.equals("")) {
     			messageBox("Please enter the Student's last name");
-    		else {
-    			Student mStudent = mMain.search(lastName);
-    			if(mStudent == null)
+    		} else {
+    			Student.setCurrStudent(getMain().search(lastName));
+    			if(Student.getCurrStudent() == null) {
     				messageBox("Student not found. Try Again");
-    			else
+    			} else {
     				displayStudent(Student.getCurrStudent());
     		}
+    		}	
     	}
     	else if(pEvent.getSource() == mSaveButton) {
-    		if(Student.getCurrStudent() != null)
+    		if(Student.getCurrStudent() != null) {
     			saveStudent(Student.getCurrStudent());
-    		else if(pEvent.getSource() == mClearButton)
+    		} else if(pEvent.getSource() == mClearButton) {
     			clear();
-    		else if(pEvent.getSource()== mExitButton) {
-    			if(Student.getCurrStudent() != null)
+    		} else if(pEvent.getSource() == mExitButton) {
+    			if(Student.getCurrStudent() != null) {
     				saveStudent(Student.getCurrStudent());
     				getMain().exit();
+    			}
     		}
     	}
     }
