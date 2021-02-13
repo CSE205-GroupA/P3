@@ -19,27 +19,29 @@ package P3;
 
 import java.util.ArrayList;
 
+
 public class Sorter {
 	
-	private static int partition(ArrayList<Student> pList, int pFromIdx, int pToIdx) {
-		String pivot = pList.get(pFromIdx).getLastName();
-		pFromIdx--;
-		pToIdx++;
-		while (pFromIdx < pToIdx) {
-			pFromIdx++;
-			while (((pList.get(pFromIdx).getLastName()).compareTo(pivot)<0)) {
-				pFromIdx++;
-			}
-			pToIdx--;
-			while (((pList.get(pToIdx).getLastName()).compareTo(pivot)>0)) {
-				pToIdx--;
-			}
-			if (pFromIdx < pToIdx) {
-				swap(pList, pFromIdx, pToIdx);
-			}
-		}
-		return pFromIdx;
-	}
+	private static int partition(ArrayList<Student> pList, int pFromIdx, int pToIdx) {		
+		      String pivot = pList.get(pFromIdx).getLastName();
+		      int i = pFromIdx - 1;
+		      int j = pToIdx + 1;
+		      while (i < j) {
+		         i++;
+		         while (pList.get(i).getLastName().compareTo(pivot) < 0) {
+		        	 i++;  
+		         }
+		         j--; 
+		         while (pList.get(j).getLastName().compareTo(pivot) > 0) { 
+		        	 j--; 
+		         }
+		         if (i < j) { 
+		        	 swap(pList, i, j); 
+		         }
+		      }
+		      return j;
+		   }	
+	
 	private static void quickSort(ArrayList<Student> pList, int pFromIdx, int pToIdx) {
 		if(pFromIdx >= pToIdx) {
 			return;
