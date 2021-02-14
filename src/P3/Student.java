@@ -130,9 +130,9 @@ public class Student implements Comparable<Student> {
 	
 
 	public int compareTo(Student pStudent) {
-		if (getLastName().compareTo(pStudent.getLastName())<0)
+		if (this.mLastName.compareTo(pStudent.getLastName())<0)
 			return -1;
-		else if(getLastName().compareTo(pStudent.getLastName())>0)
+		else if(this.mLastName.compareTo(pStudent.getLastName())>0)
 			return 1;
 		else
 			return 0;
