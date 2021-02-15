@@ -275,7 +275,7 @@ public class View extends JFrame implements ActionListener {
      *     Set the current Student object in the Student class to null
      * end clear
      */
-    void clear() {
+    private void clear() {
     	mStudentName.setText("");
     	clearNumbers();
     	Student.setCurrStudent(null);
@@ -289,7 +289,7 @@ public class View extends JFrame implements ActionListener {
      * DO NOT HARCODE THE NUMBER OF HOMEWORKS AND EXAMS
      * @param mExamText2 
      */   
-    void clearNumbers() {
+    private void clearNumbers() {
     	for(int i = 0; i < Main.getNumExams(); i++) {
     	mExamText[i].setText("");
     	}
@@ -352,7 +352,7 @@ public class View extends JFrame implements ActionListener {
      *     Call JOptionPane.showMessageDialog() to display pMessage.
      * end messageBox
      */
-    void messageBox(String pMessage) {
+    public void messageBox(String pMessage) {
     	JOptionPane.showMessageDialog(null, pMessage);
     }
 
@@ -374,7 +374,7 @@ public class View extends JFrame implements ActionListener {
      *
      * DO NOT HARDCODE THE NUMBER OF HOMEWORKS AND EXAMS
      */ 
-    void saveStudent(Student pStudent) {
+    private void saveStudent(Student pStudent) {
 
     	for(int i = 0; i < Main.getNumHomeworks(); i++) {
     		String hwstr = mHomeworkText[i].getText();

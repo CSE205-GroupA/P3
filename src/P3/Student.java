@@ -128,7 +128,7 @@ public class Student implements Comparable<Student> {
      * end compareTo
      */
 	
-
+	@Override
 	public int compareTo(Student pStudent) {
 		if (this.mLastName.compareTo(pStudent.getLastName())<0)
 			return -1;
@@ -204,7 +204,7 @@ public class Student implements Comparable<Student> {
      *
      * Accessor method for mHomeworkList.
      */
-    protected ArrayList<Integer> getHomeworkList() {
+    private ArrayList<Integer> getHomeworkList() {
         return mHomeworkList;
     }
 
@@ -240,7 +240,7 @@ public class Student implements Comparable<Student> {
      *
      * Mutator method for mExamList.
      */
-    protected void setExamList(ArrayList<Integer> pExamList) {
+    private void setExamList(ArrayList<Integer> pExamList) {
         mExamList = pExamList;
     }
 
@@ -270,7 +270,7 @@ public class Student implements Comparable<Student> {
      *
      * Mutator method for mHomeworkList.
      */
-    protected void setHomeworkList(ArrayList<Integer> pHomeworkList) {
+    private void setHomeworkList(ArrayList<Integer> pHomeworkList) {
         mHomeworkList = pHomeworkList;
     }
 

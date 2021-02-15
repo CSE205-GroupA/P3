@@ -39,7 +39,7 @@ public class Main {
     /**
      * This is where execution starts. Instantiate a Main object and then call run().
      */
-	public static void main(String[] args) {
+	public static void main(String[] pArgs) {
 		Main mainObject = new Main();
 	    mainObject.run();    
 	}
@@ -136,7 +136,7 @@ public class Main {
      * end run
      */
     
-    public void run() {
+    private void run() {
     	JFrame.setDefaultLookAndFeelDecorated(true);
     	setView(new View(this));
     	
@@ -145,6 +145,7 @@ public class Main {
     		setRoster(gbReader.readGradebook());
     	}
     	catch (FileNotFoundException e){
+    		getView().messageBox("Could not open gradebook.dat for reading. Exiting.");
     		System.exit(-1);
     	}
     }

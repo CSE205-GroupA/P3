@@ -123,7 +123,7 @@ public class Roster {
      *     call Sorter.sort() passing the list of students returned from getStudentList()
      * end sortRoster
      */
-    void sortRoster() {
+    public void sortRoster() {
     	Sorter.sort(mStudentList);
     }
 
